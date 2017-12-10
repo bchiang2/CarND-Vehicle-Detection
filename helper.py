@@ -1,10 +1,6 @@
 import numpy as np
 
-# Define a function that takes an image,
-# start and stop positions in both x and y,
-# window size (x and y dimensions),
-# and overlap fraction (for both x and y)
-def slide_window(img, x_start_stop=[None, None], y_start_stop=[None, None],
+def slide_window(img, x_start_stop=[None, None], y_start_stop=[350, None],
                     xy_window=(64, 64), xy_overlap=(0.5, 0.5)):
     # If x and/or y start/stop positions not defined, set to image size
     if x_start_stop[0] == None:
@@ -43,7 +39,16 @@ def slide_window(img, x_start_stop=[None, None], y_start_stop=[None, None],
             window_list.append(((startx, starty), (endx, endy)))
     # Return the list of windows
     return window_list
-import cv2
 
-image = cv2.imread('./test_images/test1.jpg')
-print(slide_window(image))
+def get_windows_with_scale(image):
+    sm_windows = slide_window(image, x_start_stop=[500, None], y_start_stop=[400, 500],
+                    xy_window=(64, 64), xy_overlap=(0.5, 0.5))
+
+    md_windows = slide_window(image, x_start_stop=[500, None], y_start_stop=[400, 500],
+                    xy_window=(64*2, 64*2), xy_overlap=(0.5, 0.5))
+
+    lg_windows = slide_window(image, x_start_stop=[500, None], y_start_stop=[400, 600],
+                    xy_window=(64*3, 64*3), xy_overlap=(0.5, 0.5))
+
+
+    return sm_windows + md_windows + lg_windows

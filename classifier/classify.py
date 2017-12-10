@@ -1,6 +1,0 @@
-import cv2
-import numpy as np
-from classifier.color_classify import extract_image_features
-from classifier.hog_classify import extract_image_features as hog_extract_features
-from classifier.color_classify import extract_image_features as color_extract_features
-
