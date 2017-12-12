@@ -1,4 +1,6 @@
 .idea
+.ipynb_checkpoints
 *.zip
 classifier/data/
 __pycache__
+extract_image

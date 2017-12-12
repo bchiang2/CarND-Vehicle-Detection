@@ -9,6 +9,7 @@ from classifier.features.color_classify import extract_image_features as color_e
 from classifier.helpers import open_image_file
 from sklearn.model_selection import train_test_split
 import config
+import cv2
 
 TEST_SIZE = None
 SVC = None
@@ -85,7 +86,6 @@ def fit_model():
     svc.fit(X_train, y_train)
 
     svc.fit(X_train, y_train)
-
 
     # Check the score of the SVC
     print('Test Accuracy of SVC = ', round(svc.score(X_test, y_test), 4))
